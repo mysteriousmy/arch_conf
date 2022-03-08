@@ -98,7 +98,8 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
+bindsym $mod+a exec /home/jack/.config/rofi/bin/android_apps
 bindsym $mod+q exec ~/Scripts/addblur.sh
 bindsym $mod+z exec ~/Scripts/reduceblur.sh
 # focus the child container
@@ -210,14 +211,17 @@ client.background       #2B2C2B
 #exec picom --config /home/jack/.config/picom/picom.conf
 exec picom --config /home/jack/.config/compton.conf
 exec fcitx5
+exec optimus-manager-qt &
 exec mate-volume-control-status-icon
 #exec feh --bg-fill ~/Pictures/wall.png
 exec xfce4-power-manager &
+exec /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec utools &
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec_always --no-startup-id dunst
 exec bash ~/.config/i3/wall.sh &
 #exec komorebi
-exec bash ~/.config/polybar/launch.sh
+#exec bash ~/.config/polybar/launch.sh
 #bindsym $mod+c exec google-chrome-stable
 #bindsym $mod+c exec rofi -show drun -theme one-theme
 #bindsym $mod+c exec rofi -show run -width 2560 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 770 -separator-style none -opacity 80
@@ -233,7 +237,7 @@ smart_borders on
 # cut all the screen 
 bindsym  --release Print exec "sh ~/.config/i3/cut_all.sh"
 # cut current window
-bindsym --release $mod+a exec "sh ~/.config/i3/cut_cur.sh"
+#bindsym --release $mod+a exec "sh ~/.config/i3/cut_cur.sh"
 # cut selection 
-bindsym --release $mod+Shift+a exec "sh ~/.config/i3/cut_sel.sh"
-
+#bindsym --release $mod+Shift+a exec "sh ~/.config/i3/cut_sel.sh"
+bindsym --release $mod+Shift+a exec deepin-screenshot

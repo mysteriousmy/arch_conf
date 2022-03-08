@@ -9,14 +9,7 @@ dir="$HOME/.config/rofi/applets/android"
 rofi_command="rofi -theme $dir/six.rasi"
 
 # Links
-terminal=""
-check="$(ps -ef |grep "clash" | awk '{print $3}' | sed -n '1p')"
-echo $check
-if [[ $check != '1' ]]; then
-   terminal=""
-else
-   terminal=""
-fi
+terminal=""
 files=""
 editor=""
 browser=""
@@ -34,13 +27,21 @@ options="$terminal\n$files\n$editor\n$browser\n$music\n$settings"
 chosen="$(echo -e "$options" | $rofi_command -p "Most Used" -dmenu -selected-row 0)"
 case $chosen in
     $terminal)
-	     if [[ $check == '1' ]]; then
-		ps -ef | grep clash | awk '{print $2}' | xargs kill -9
-		msg "关闭clash成功！"
-	     else
-		/home/jack/software/clash-for-linux/bin/clash-linux-amd64 -d /home/jack/software/clash-for-linux/bin/ &
-		msg "启动clash成功!"
-	     fi
+		if [[ -f /usr/bin/termite ]]; then
+			/home/jack/software/clash-for-linux/bin/clash-linux-amd64 -d /home/jack/software/clash-for-linux/bin/ &
+		elif [[ -f /usr/bin/urxvt ]]; then
+			urxvt &
+		elif [[ -f /usr/bin/kitty ]]; then
+			kitty &
+		elif [[ -f /usr/bin/xterm ]]; then
+			xterm &
+		elif [[ -f /usr/bin/xfce4-terminal ]]; then
+			xfce4-terminal &
+		elif [[ -f /usr/bin/gnome-terminal ]]; then
+			gnome-terminal &
+		else
+			msg "No suitable terminal found!"
+		fi
         ;;
     $files)
 		if [[ -f /usr/bin/thunar ]]; then
@@ -71,8 +72,6 @@ case $chosen in
 			chromium &
 		elif [[ -f /usr/bin/midori ]]; then
 			midori &
-		elif [[ -f /usr/bin/microsoft-edge-dev ]]; then
-			microsoft-edge-dev &
 		else
 			msg "No suitable web browser found!"
 		fi
@@ -81,7 +80,7 @@ case $chosen in
 		if [[ -f /usr/bin/lxmusic ]]; then
 			lxmusic &
 		else
-			netease-cloud-music &
+			msg "No suitable music player found!"
 		fi
         ;;
     $settings)
@@ -92,3 +91,4 @@ case $chosen in
 		fi
         ;;
 esac
+

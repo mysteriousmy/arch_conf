@@ -59,13 +59,14 @@ conky.config = {
 
 conky.text = [[
 # Free space on /home
-${if_up wlp3s0} ↑${upspeed wlp3s0} |${else}${if_up enp2s0f1}  ${upspeed enp2s0f1} |${else} \
-${if_up wlp3s0} ↓${downspeed wlp3s0} |${else}${if_up enp2s0f1}  ${downspeed enp2s0f1} |${else} \
-  ${cpu}% ${exec sensors | grep 'Package id 0' | cut -c17-22}C | \
-  ${exec nvidia-smi | awk '{print $13}' | grep %} ${exec nvidia-smi | awk '{print $3}' | grep C | cut -c1-2}°C | \
+${if_up wlan0} ↑${upspeed wlan0} |${else}${if_up enp0s31f6}  ${upspeed enp0s31f6} |${else} \
+${if_up wlan0} ↓${downspeed wlan0} |${else}${if_up enp0s31f6}  ${downspeed enp0s31f6} |${else} \
+   ${cpu}% ${exec sensors | grep 'Package id 0' | cut -c17-22}C | \
+   ${exec nvidia-smi | awk '{print $13}' | grep %} ${exec nvidia-smi | awk '{print $3}' | grep C | cut -c1-2}°C | \
 # Ethernet status
-  ${fs_free /home} | \
-  $mem ${exec /home/jack/.config/i3/cacu.sh}% \
-  $swap ${exec /home/jack/.config/i3/cacu_swap.sh}% | \
-  ${time %Y.%m.%d}  ${time %H:%M}
+   ${fs_free /} | \
+   ${fs_free /home} | \
+   $mem ${exec /home/jack/.config/i3/cacu.sh}% \
+   $swap ${exec /home/jack/.config/i3/cacu_swap.sh}% | \
+   ${time %Y.%m.%d}  ${time %H:%M}
 ]];

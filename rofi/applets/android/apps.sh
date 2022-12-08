@@ -4,19 +4,29 @@
 ## Mail    : adi1090x@gmail.com
 ## Github  : @adi1090x
 ## Twitter : @adi1090x
-
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dir="$HOME/.config/rofi/applets/android"
 rofi_command="rofi -theme $dir/six.rasi"
 
 # Links
 terminal=""
 check="$(ps -ef |grep "clash" | awk '{print $3}' | sed -n '1p')"
+#vpncheck="$(ps -ef | grep "openvpn" | awk '{print $3}' | sed -n '1p')"
 echo $check
-if [[ $check != '1' ]]; then
-   terminal=""
+if [[ $check == 1 ]]; then
+  # terminal=""
+    terminal=""
 else
-   terminal=""
+  # terminal=""
+    terminal=""
 fi
+
+#if [[ $vpncheck != '1' ]]; then
+#   openvpn=""
+#else
+#   openvpn=""
+#fi
+
 files=""
 editor=""
 browser=""
@@ -35,13 +45,24 @@ chosen="$(echo -e "$options" | $rofi_command -p "Most Used" -dmenu -selected-row
 case $chosen in
     $terminal)
 	     if [[ $check == '1' ]]; then
-		ps -ef | grep clash | awk '{print $2}' | xargs kill -9
+#		ps -ef | grep clash | awk '{print $2}' | xargs kill -9
+		systemctl stop clash
 		msg "关闭clash成功！"
 	     else
-		/home/jack/software/clash-for-linux/bin/clash-linux-amd64 -d /home/jack/software/clash-for-linux/bin/ &
+#		/home/jack/software/clash-for-linux/bin/clash-linux-amd64 -d /home/jack/software/clash-for-linux/bin/ &
+		systemctl start clash
 		msg "启动clash成功!"
 	     fi
         ;;
+#    $openvpn)
+#             if [[ $vpncheck == '1' ]]; then
+#		systemctl stop openvpn
+#		msg "关闭openvpn成功！"
+#	     else
+#		systemctl start openvpn
+#		msg "启动openvpn成功！"
+#	     fi
+#	;;		
     $files)
 		if [[ -f /usr/bin/thunar ]]; then
 			thunar &

@@ -1,0 +1,156 @@
+# 基础设置
+backend = "glx";
+mark-wmwin-focused = true;
+mark-ovredir-focused = true;
+detect-client-opacity = true;
+unredir-if-possible = true;
+vsync = true;
+dbe = false;
+detect-transient = true;
+detect-client-leader = true;
+invert-color-include = [ ];
+glx-copy-from-front = false;
+
+# 圆角
+#corner-radius = 10.0;
+#round-borders = 2;
+#rounded-corners-exclude = [
+#    "class_g *= 'dwm'",
+    # "class_g *= 'fcitx'",
+#    "name = 'Notification'",
+#    "class_g = 'Conky'",
+#    "class_g ?= 'Notify-osd'",
+#    "class_g = 'Cairo-clock'",
+#    "class_g = 'slop'",
+#    "class_g = 'Polybar'",
+#    "_GTK_FRAME_EXTENTS@:c",
+#    "class_g = 'Bar'",
+#    "window_type = 'dock'",
+#    "window_type = 'desktop'",
+#];
+
+# 阴影
+shadow=true;
+detect-rounded-corners = true;
+shadow-radius = 4;
+shadow-offset-x = 0;
+shadow-offset-y = 0;
+shadow-opacity = 0.25;
+shadow-ignore-shaped = false;
+shadow-radius = 10;
+shadow-offset-x = -10;
+shadow-offset-y = -10;
+shadow-opacity = 0.7;
+shadow-ignore-shaped = false;
+shadow-exclude = [
+  "name = 'Notification'",
+  "class_g = 'Conky'",
+  "class_g ?= 'Notify-osd'",
+  "class_g = 'Cairo-clock'",
+  "class_g = 'slop'",
+  "class_g = 'Polybar'",
+  "_GTK_FRAME_EXTENTS@:c"
+];
+shadow-exclude = [
+	"_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'",
+	"_GTK_FRAME_EXTENTS@:c",
+	"override_redirect = 1 && !WM_CLASS@:s",
+    "name = 'Notification'",
+    "class_g ?= 'Dmenu'",
+    "class_g *= 'dwm'",
+    "class_g *= 'Wine'",
+    "name = 'Dunst'",
+    "class_g *= 'float'"
+];
+
+# 透明
+active-opacity = 0.9;
+inactive-opacity = 0.7;
+inactive-opacity-override = false;
+#frame-opacity = 0.7;
+opacity-rule = [
+    "80:class_g = 'dwmsystray'",
+    "100:class_g = 'mpv'",
+    "100:class_g = 'org.remmina.Remmina'",
+    "100:class_g = 'Surf'",
+    "100:class_g = 'qutebrowser'",
+    "100:name *? = 'Sunflower'",
+    "100:WM_NAME@:s *= 'bilibili' && focused",
+    "80:WM_NAME@:s *= 'bilibili' && !focused",
+    "100:class_g = 'obs'",
+    "99:class_g *= 'Gimp-'",
+    "100:WM_CLASS@:s *= 'tim.exe'",
+    "100:class_g = 'Wine'",
+    "99:class_g *= 'Microsoft-edge-' && focused",
+    "70:class_g *= 'Microsoft-edge-' && !focused",
+    "80:class_g = 'TelegramDesktop' && focused",
+    "70:class_g = 'TelegramDesktop' && !focused",
+    "80:class_g = 'Code' && focused",
+    "70:class_g = 'Code' && !focused",
+    "80:class_g *= 'jetbrains-' && focused",
+    "70:class_g *= 'jetbrains-' && !focused",
+    "100:class_g = 'Proton'",
+    "100:class_g *= 'crx_'",
+    "99:class_g = 'Google-chrome' && focused",
+    "70:class_g = 'Google-chrome' && !focused",
+];
+focus-exclude = [
+  "class_g = 'Cairo-clock'",
+  "class_g = 'Bar'",                    # lemonbar
+  "class_g = 'slop'"                    # maim
+];
+# 淡入淡出
+fading = true;
+fade-delta = 2;
+fade-in-step = 0.01;
+fade-out-step = 0.01;
+no-fading-openclose = false;
+fade-exclude = [
+    #"class_g *= 'fcitx'",
+    "class_g *= 'Wine'",
+    "class_g *= 'Proton'",
+];
+
+# 动画
+animations = true;
+#animation-delta = 8;
+animation-opacity-min = 0.3;
+animation-window-mass = 0.5;
+animation-stiffness = 350;
+animation-dampening = 17;
+# auto slide-down slide-up slide-right slide-left zoom fly-in slide-in slide-out
+animation-for-open-window = "zoom";
+#animation-for-close-window = "zoom";
+animation-for-unmap-window = "none";
+animation-for-transient-window = "none";
+animation-exclude = [
+    "window_type = 'tooltip'",
+    "_GTK_FRAME_EXTENTS@:c",
+    "class_g = 'fcitx'",
+    "class_g = 'flameshot'",
+    "class_g = 'Dunst'",
+    "class_g *= 'Wine'",
+    "class_g *= 'Proton'",
+    # "class_g *= 'jetbrains-'",
+];
+
+# 模糊
+blur-method = "dual_kawase";
+blur-strength = 10
+blur-kern = "3x3box";
+blur-background-exclude = [
+	"window_type = 'desktop'",
+	"_GTK_FRAME_EXTENTS@:c",
+    "class_g *= 'dwm'",
+    "name *? = 'Sunflower'",
+    "class_g *= 'Wine'",
+    "class_g *= 'Proton'",
+    "class_g = 'fcitx'",
+];
+
+# 针对窗口类型的设置
+wintypes :
+{
+  tooltip: { fade = true; shadow = false; opacity = 0.85; focus = true; };
+  fullscreen: { fade = true; shadow = false; focus = true;};
+};

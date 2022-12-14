@@ -1,20 +1,31 @@
 #!/bin/bash
 option=$1
-a=$(i3-msg -t get_workspaces | jq '.[] | select(.focused).num')
+envir=$XDG_SESSION_TYPE
+commands=""
+if ([ $envir == "wayland" ]); then
+    commands=$(hyprctl monitors -j | jq '.[0].activeWorkspace.id')
+else
+    commands=$(i3-msg -t get_workspaces | jq '.[] | select(.focused).num')
+fi
 case ${option} in
-    next)
-        xdotool key Super_L+`expr $a + 1`
+next)
+    if ([ $envir != "wayland" ]); then
+        ydotool key 125:1 $(expr $commands + 2):1 125:0 $(expr $commands + 2):0
+    fi
+    #xdotool key Super_L+`expr $a + 1`
     ;;
-    previous)
-        xdotool key Super_L+`expr $a - 1`
+previous)
+    if ([ $envir != "wayland" ]); then
+        ydotool key 125:1 $(expr $commands - 2):1 125:0 $(expr $commands - 2):0
+    fi
     ;;
-    win_next)
-        xdotool key Super_L+shift+`expr $a + 1`
+win_next)
+    ydotool key 125:1 42:1 $(expr $commands + 2):1 125:0 42:0 $(expr $commands + 2):0
     ;;
-    win_previous)
-        xdotool key Super_L+shift+`expr $a - 1`
+win_previous)
+    ydotool key 125:1 42:1 $(expr $commands - 2):1 125:0 42:0 $(expr $commands - 2):0
     ;;
-    *)
-        echo "null"
+*)
+    echo "null"
     ;;
 esac

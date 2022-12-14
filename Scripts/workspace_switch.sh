@@ -18,14 +18,14 @@ next)
     ;;
 previous)
     if ([ $envir != "wayland" ]); then
-        ydotool key 125:1 $(expr $commands - 2):1 125:0 $(expr $commands - 2):0
+        ydotool key 125:1 $(expr $commands):1 125:0 $(expr $commands):0
     fi
     ;;
 win_next)
     ydotool key 125:1 42:1 $(expr $commands + 2):1 125:0 42:0 $(expr $commands + 2):0
     ;;
 win_previous)
-    ydotool key 125:1 42:1 $(expr $commands - 2):1 125:0 42:0 $(expr $commands - 2):0
+    ydotool key 125:1 42:1 $(expr $commands):1 125:0 42:0 $(expr $commands):0
     ;;
 *)
     echo "null"

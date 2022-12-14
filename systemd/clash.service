@@ -1,0 +1,16 @@
+[Unit]
+Description=Clash Service
+Documentation=https://www.clash.org/
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/home/jack/software/clash-for-linux/bin/clash-linux-amd64 -d /home/jack/software/clash-for-linux/bin/
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target

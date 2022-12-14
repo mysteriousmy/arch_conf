@@ -1,5 +1,6 @@
 #!/bin/bash
 # require ydotool https://github.com/ReimuNotMoe/ydotool and jq
+# key code see /usr/include/linux/input-event-codes.h
 option=$1
 envir=$XDG_SESSION_TYPE
 commands=""

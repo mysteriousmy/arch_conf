@@ -1,4 +1,5 @@
 #!/bin/bash
+# require ydotool https://github.com/ReimuNotMoe/ydotool and jq
 option=$1
 envir=$XDG_SESSION_TYPE
 commands=""

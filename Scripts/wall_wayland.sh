@@ -2,8 +2,8 @@
 swaybg -i $(find /home/jack/Pictures/wall/. -type f | shuf -n1) -m fill &
 OLD_PID=$!
 while true; do
-    sleep 600
-    swaybg -i $(find img/. -type f | shuf -n1) -m fill &
+    sleep 30m
+    swaybg -i $(find /home/jack/Pictures/wall/. -type f | shuf -n1) -m fill &
     NEXT_PID=$!
     sleep 5
     kill $OLD_PID

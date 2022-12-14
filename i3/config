@@ -254,4 +254,5 @@ exec libinput-gestures-setup stop
 exec libinput-gestures-setup start &
 #bindsym $mod+Control+Right exec workspace_switch next
 #bindsym $mod+Control+Right exec gimp
+exec killn ydotoold
 exec ydotoold &

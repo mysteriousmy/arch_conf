@@ -68,5 +68,6 @@ ${if_up wlan0} ↓${downspeed wlan0} |${else}${if_up enp0s31f6}  ${downspe
    ${fs_free /home} | \
    $mem ${exec /home/jack/.config/i3/cacu.sh}% \
    $swap ${exec /home/jack/.config/i3/cacu_swap.sh}% | \
+  ${exec pactl list sinks | grep "Volume:" | awk 'NR==1{print $5}'} |\ 
    ${time %Y.%m.%d}  ${time %H:%M}
 ]];

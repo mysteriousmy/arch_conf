@@ -44,7 +44,7 @@
     "max-length": 30
   },
   "tray": {
-    "icon-size": 13,
+    "icon-size": 15,
     "spacing": 10
   },
   "custom/media": {
@@ -107,8 +107,9 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "network": {
-    "format-wifi": "   {essid}",
+    "format-wifi": "   {essid} {bandwidthDownBits}",
     "format-ethernet": "󰤮 Disconnected",
+    "interval": 1,
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "󰤮 Disconnected",
     "tooltip-format-wifi": "Signal Strength: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}"

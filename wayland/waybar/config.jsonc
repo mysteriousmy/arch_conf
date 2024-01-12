@@ -3,7 +3,7 @@
   "layer": "top",
   "height": 30,
   "modules-left": [
-    "wlr/workspaces"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "custom/notification",
@@ -20,7 +20,7 @@
   "modules-right": [
     "custom/cava",
   ],
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "on-click": "activate",
